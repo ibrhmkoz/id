@@ -8,10 +8,10 @@ import (
 type User struct{}
 
 func TestRestoreID(t *testing.T) {
-	oid := NewID[User]()
-	rid, err := RestoreID[User](oid.Unwrap())
+	oid := New[User]()
+	rid, err := Restore[User](oid.Unwrap())
 	if err != nil {
-		t.Errorf("RestoreID failed with error: %v", err)
+		t.Errorf("Restore failed with error: %v", err)
 	}
 	if oid != rid {
 		t.Error("Restored ID does not match the original ID")
@@ -19,8 +19,8 @@ func TestRestoreID(t *testing.T) {
 }
 
 func TestRestoreInvalidID(t *testing.T) {
-	_, err := RestoreID[User]("invalid-ulid")
+	_, err := Restore[User]("invalid-ulid")
 	if !errors.Is(err, ErrInvalidULID) {
-		t.Error("RestoreID should have returned an error for an invalid ULID")
+		t.Error("Restore should have returned an error for an invalid ULID")
 	}
 }

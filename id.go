@@ -9,9 +9,9 @@ type ID[T any] struct {
 	value string
 }
 
-// NewID creates an ID with generic type used as a phantom type that
+// New creates an ID with generic type used as a phantom type that
 // averts comparing two entities of distinct types.
-func NewID[T any]() ID[T] {
+func New[T any]() ID[T] {
 	return ID[T]{
 		value: ulid.Make().String(),
 	}
@@ -19,8 +19,8 @@ func NewID[T any]() ID[T] {
 
 var ErrInvalidULID = errors.New("invalid ULID")
 
-// RestoreID restores an ID.
-func RestoreID[T any](value string) (ID[T], error) {
+// Restore restores an ID.
+func Restore[T any](value string) (ID[T], error) {
 	id, err := ulid.ParseStrict(value)
 	if err != nil {
 		return ID[T]{}, ErrInvalidULID
