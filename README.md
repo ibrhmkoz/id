@@ -36,7 +36,7 @@ The ID package is designed to address common challenges and needs in enterprise 
 To install the ID package, use the following command:
 
 ```
-go get github.com/your/repo/id
+go get github.com/ibrhmkoz/id
 ```
 
 ## Usage
