@@ -47,25 +47,25 @@ Here's a basic example of how to use the ID package:
 package main
 
 import (
-	"fmt"
-	"github.com/ibrhmkoz/id"
+   "fmt"
+   "github.com/ibrhmkoz/id"
 )
 
 type User struct{}
 
 func main() {
-	userID := id.NewID[User]()
-	fmt.Println("Generated User ID:", userID)
+   uid := id.NewID[User]()
+   fmt.Println("Generated User ID:", uid)
 
-	stringID := userID.Unwrap()
-	fmt.Println("String representation of User ID:", stringID)
+   sid := uid.Unwrap()
+   fmt.Println("String representation of User ID:", sid)
 
-	restoredID, err := id.RestoreID[User](stringID)
-	if err != nil {
-		fmt.Println("Error restoring User ID:", err)
-	} else {
-		fmt.Println("Restored User ID:", restoredID)
-	}
+   rid, err := id.RestoreID[User](sid)
+   if err != nil {
+      fmt.Println("Error restoring User ID:", err)
+   } else {
+      fmt.Println("Restored User ID:", rid)
+   }
 }
 
 ```
