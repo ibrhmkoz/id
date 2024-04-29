@@ -54,13 +54,13 @@ import (
 type User struct{}
 
 func main() {
-   uid := id.NewID[User]()
+   uid := id.New[User]()
    fmt.Println("Generated User ID:", uid)
 
    sid := uid.Unwrap()
    fmt.Println("String representation of User ID:", sid)
 
-   rid, err := id.RestoreID[User](sid)
+   rid, err := id.Restore[User](sid)
    if err != nil {
       fmt.Println("Error restoring User ID:", err)
    } else {
